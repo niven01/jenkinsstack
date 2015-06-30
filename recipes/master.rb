@@ -23,11 +23,6 @@ include_recipe 'jenkinsstack::_prep_keys'
 s_private_key = node.run_state['jenkinsstack_private_key']
 s_public_key  = node['jenkinsstack']['jenkins_slave_ssh_pubkey']
 
-# Create jenkins auth user, this enables auth for further actions
-jenkins_user 'chef' do
-  public_keys [s_public_key]
-end
-
 # install plugins and theme
 include_recipe 'jenkinsstack::_plugins'
 
